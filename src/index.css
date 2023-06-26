@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .ref{
+        @apply border-2 border-solid border-red-600
+    }
+
+    .card{
+        @apply p-10 rounded-2xl h-fit text-center shadow-custom
+    }
+    .roundButton{
+        @apply ref h-10 w-20 rounded-3xl
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
