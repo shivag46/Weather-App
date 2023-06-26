@@ -48,6 +48,32 @@ function SearchForm() {
   )
 }
 
+function RoundedButton({ setUnit }) {
+  const handleClick = (e) => {
+    e.preventDefault()
+    let btn = document.getElementById("btn-key")
+    if (btn.classList.contains("float-left")) {
+      btn.classList.remove("float-left")
+      btn.classList.add("float-right")
+      setUnit('f')
+    } else {
+      btn.classList.remove("float-right")
+      btn.classList.add("float-left")
+      setUnit('c')
+    }
+  }
+
+  return (
+    <div className='flex w-fit items-center hover:cursor-pointer'>
+      <h1 className='m-2 text-xl'>°C</h1>
+      <div onClick={handleClick} className='shadow-custom bg-black   h-10 w-20 rounded-3xl p-1'>
+        <div id="btn-key" className='rounded-full h-8 w-8 bg-slate-100 float-right'></div>
+      </div>
+      <h1 className='m-2 text-xl'>°F</h1>
+    </div>
+  )
+}
+
 function Card(props) {
   let { id } = useParams()
   const [data, setData] = useState(null)
@@ -90,145 +116,113 @@ function Card(props) {
             </div>
           </div>
 
-          <div className='text-xl flex'>
-            <div className='w-1/2'>
-              <h1 className='p-2'>Local Time ⏰:</h1>
-              <div className='flex items-center justify-center p-2'>
-                <h1>Maximum Temperature </h1>
-                <img className='h-8 w-8' src={require("./images/high_temp.png")} />
-                <h1>:</h1>
-              </div>
-              <div className='flex items-center justify-center p-2'>
-                <h1>Minimum Temperature </h1>
-                <img className='h-8 w-8' src={require("./images/low_temp.png")} />
-                <h1>:</h1>
-              </div>
-              <h1 className='p-2'>Maximum Windspeed 🍃:</h1>
-              <div className='flex items-center justify-center p-2'>
-                <h1>UV Index </h1>
-                <img className='h-8 w-8' src={require("./images/radiation.png")} />
-                <h1>:</h1>
-              </div>
-              <div className='flex items-center justify-center p-2'>
-                <h1>Sunrise </h1>
-                <img className='h-8 w-8' src={require("./images/sunrise.png")} />
-                <h1>:</h1>
-              </div>
-              <div className='flex items-center justify-center p-2'>
-                <h1>Sunset </h1>
-                <img className='h-8 w-8' src={require("./images/sunset.png")} />
-                <h1>:</h1>
-              </div>
-              <div className='flex items-center justify-center p-2'>
-                <h1>Humidity </h1>
-                <img className='h-8 w-8' src={require("./images/humidity.png")} />
-                <h1>:</h1>
-              </div>
-              <h1 className='p-2'>Precipitation ☔:</h1>
-            </div>
+          <div className='text-xl'>
+            <table className=' w-full'>
+              <tr>
+                <td><h1 className='p-2'>Local Time ⏰:</h1></td>
+                <td><h1 className='p-2'>{data.location.localtime}</h1></td>
+              </tr>
 
-            <div className='w-1/2'>
-              <h1 className='p-2'>{data.location.localtime}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day['maxtemp_' + unit]} °{unit.toUpperCase()}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day['mintemp_' + unit]} °{unit.toUpperCase()}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day.maxwind_kph} kph</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day.uv}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].astro.sunrise}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].astro.sunset}</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day.avghumidity}%</h1>
-              <h1 className='p-2'>{data.forecast.forecastday[0].day.totalprecip_mm} mm</h1>
-            </div>
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>Maximum Temperature </h1>
+                    <img className='h-8 w-8' src={require("./images/high_temp.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day['maxtemp_' + unit]} °{unit.toUpperCase()}</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>Minimum Temperature </h1>
+                    <img className='h-8 w-8' src={require("./images/low_temp.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day['mintemp_' + unit]} °{unit.toUpperCase()}</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <h1 className='p-2'>Maximum Windspeed 🍃:</h1>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day.maxwind_kph} kph</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>Sunrise </h1>
+                    <img className='h-8 w-8' src={require("./images/sunrise.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day.uv}</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>Sunset </h1>
+                    <img className='h-8 w-8' src={require("./images/sunset.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].astro.sunset}</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>Humidity </h1>
+                    <img className='h-8 w-8' src={require("./images/humidity.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day.avghumidity}%</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <h1 className='p-2'>Precipitation ☔:</h1>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day.totalprecip_mm} mm</h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div className='flex items-center justify-center p-2'>
+                    <h1>UV Index </h1>
+                    <img className='h-8 w-8' src={require("./images/radiation.png")} />
+                    <h1>:</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className='p-2'>{data.forecast.forecastday[0].day.uv}</h1>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       )
 }
 
-function RoundedButton({ setUnit }) {
-  const handleClick = (e) => {
-    e.preventDefault()
-    let btn = document.getElementById("btn-key")
-    if (btn.classList.contains("float-left")) {
-      btn.classList.remove("float-left")
-      btn.classList.add("float-right")
-      setUnit('f')
-    } else {
-      btn.classList.remove("float-right")
-      btn.classList.add("float-left")
-      setUnit('c')
-    }
-  }
-
-  return (
-    <div className='flex w-fit items-center'>
-      <h1 className='m-2 text-xl'>°C</h1>
-      <div onClick={handleClick} className='shadow-custom bg-black   h-10 w-20 rounded-3xl p-1'>
-        <div id="btn-key" className='rounded-full h-8 w-8 bg-slate-100 float-right'></div>
-      </div>
-      <h1 className='m-2 text-xl'>°F</h1>
-    </div>
-  )
-}
-
-
-{/* <div className='flex ref justify-between mt-3'>
-          <h1>Local Time: 2023-06-26 08:15</h1>
-          <h1>Maximum Temperature: 25 *C</h1>
-          <h1>Minimum Temperature: 13 *C</h1>
-        </div>
-
-        <div className='flex ref justify-between mt-3'>
-          <h1>Maximum Windspeed: 23 kmph</h1>
-          <h1>Minimum windspeed: 13 kmph</h1>
-          <h1>Humidity: 23</h1>
-        </div>
-
-        <div className='flex ref justify-between mt-3'>
-          <h1>Sunrise: 6:00 AM</h1>
-          <h1>Sunset: 6:00 AM</h1>
-          <h1>Precipitation: 23%</h1>
-        </div> */}
-
-// return (
-//   <div className='flex flex-col items-center'>
-//     <NavBar />
-//     <Home />
-//   </div>
-// );
-
-
-function NavBar() {
-  return (
-    <div className='flex p-2 w-screen justify-around'>
-      <a href='/'><h1 className='text-xl'>Home</h1></a>
-      <a href='/'><h1 className='text-xl'>Stats</h1></a>
-      <a href='/'><h1 className='text-xl'>About</h1></a>
-    </div>
-  )
-}
-
-function Home() {
-  return (
-    <div className='ref h-screen w-screen flex'>
-      <Fixtures />
-      <Table />
-    </div>
-  )
-}
-
-function Fixtures() {
-  return (
-    <div className='ref h-screen w-8/12'>
-
-    </div>
-  )
-}
-
-function Table() {
-  return (
-    <div className='ref'>
-
-    </div>
-  )
-}
 
 export default App;
