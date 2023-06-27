@@ -28,7 +28,7 @@ function RoundedButton({ setUnit }) {
     )
 }
 
-function Card(props) {
+function Card() {
     let { id } = useParams()
     const [data, setData] = useState(null)
     const [unit, setUnit] = useState('f')
@@ -56,8 +56,8 @@ function Card(props) {
             </div>
         ) :
             (
-                <div className='card w-100'>
-                    <div className='w-fit float-right'>
+                <div className='lg:card w-100 text-center relative'>
+                    <div className='w-fit scale-50 lg:scale-75 lg:right-5 lg:top-5 absolute right-0 -top-7'>
                         <RoundedButton setUnit={setUnit} />
                     </div>
 
@@ -121,7 +121,7 @@ function Card(props) {
                                     </div>
                                 </td>
                                 <td>
-                                    <h1 className='p-2'>{data.forecast.forecastday[0].day.uv}</h1>
+                                    <h1 className='p-2'>{data.forecast.forecastday[0].astro.sunrise}</h1>
                                 </td>
                             </tr>
 
