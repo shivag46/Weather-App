@@ -36,7 +36,7 @@ function Card() {
     useEffect(() => {
         let getData = async () => {
             let key = "3781117b77f642bbab772214232606"
-            let response = await fetch("http://api.weatherapi.com/v1/forecast.json?key=" + key + "&q=" + id)
+            let response = await fetch("https://api.weatherapi.com/v1/forecast.json?key=" + key + "&q=" + id)
             let x = await response.json()
             console.log(x)
             setData(x)
