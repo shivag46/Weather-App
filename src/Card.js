@@ -73,14 +73,20 @@ function Card() {
                     <div className='text-xl'>
                         <table className=' w-full'>
                             <tr>
-                                <td><h1 className='p-2'>Local Time ⏰:</h1></td>
+                                <td>
+                                    <div className='flex items-center justify-center p-2'>
+                                        <h1 className='w-max'>Local Time </h1>
+                                        <h1 className='h-8 w-8'>⏰</h1>
+                                        <h1>:</h1>
+                                    </div>
+                                </td>
                                 <td><h1 className='p-2'>{data.location.localtime}</h1></td>
                             </tr>
 
                             <tr>
                                 <td>
                                     <div className='flex items-center justify-center p-2'>
-                                        <h1>Maximum Temperature </h1>
+                                        <h1 className='w-max'>Maximum Temperature </h1>
                                         <img className='h-8 w-8' src={require("./images/high_temp.png")} />
                                         <h1>:</h1>
                                     </div>
@@ -93,7 +99,7 @@ function Card() {
                             <tr>
                                 <td>
                                     <div className='flex items-center justify-center p-2'>
-                                        <h1>Minimum Temperature </h1>
+                                        <h1 className='w-max'>Minimum Temperature </h1>
                                         <img className='h-8 w-8' src={require("./images/low_temp.png")} />
                                         <h1>:</h1>
                                     </div>
@@ -105,7 +111,11 @@ function Card() {
 
                             <tr>
                                 <td>
-                                    <h1 className='p-2'>Maximum Windspeed 🍃:</h1>
+                                    <div className='flex items-center justify-center p-2'>
+                                        <h1 className='w-max'>Maximum Windspeed </h1>
+                                        <h1 className='h-8 w-8'>🍃</h1>
+                                        <h1>:</h1>
+                                    </div>
                                 </td>
                                 <td>
                                     <h1 className='p-2'>{data.forecast.forecastday[0].day.maxwind_kph} kph</h1>
@@ -115,7 +125,7 @@ function Card() {
                             <tr>
                                 <td>
                                     <div className='flex items-center justify-center p-2'>
-                                        <h1>Sunrise </h1>
+                                        <h1 className='w-max'>Sunrise </h1>
                                         <img className='h-8 w-8' src={require("./images/sunrise.png")} />
                                         <h1>:</h1>
                                     </div>
@@ -128,7 +138,7 @@ function Card() {
                             <tr>
                                 <td>
                                     <div className='flex items-center justify-center p-2'>
-                                        <h1>Sunset </h1>
+                                        <h1 className='w-max'>Sunset </h1>
                                         <img className='h-8 w-8' src={require("./images/sunset.png")} />
                                         <h1>:</h1>
                                     </div>
@@ -141,7 +151,7 @@ function Card() {
                             <tr>
                                 <td>
                                     <div className='flex items-center justify-center p-2'>
-                                        <h1>Humidity </h1>
+                                        <h1 className='w-max'>Humidity </h1>
                                         <img className='h-8 w-8' src={require("./images/humidity.png")} />
                                         <h1>:</h1>
                                     </div>
@@ -153,7 +163,11 @@ function Card() {
 
                             <tr>
                                 <td>
-                                    <h1 className='p-2'>Precipitation ☔:</h1>
+                                    <div className='flex items-center justify-center p-2'>
+                                        <h1 className='w-max'>Precipitation </h1>
+                                        <h1 className='h-8 w-8'>☔</h1>
+                                        <h1>:</h1>
+                                    </div>
                                 </td>
                                 <td>
                                     <h1 className='p-2'>{data.forecast.forecastday[0].day.totalprecip_mm} mm</h1>
