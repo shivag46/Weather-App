@@ -15,7 +15,7 @@ function SearchForm() {
     }
 
     return (
-        <div className='w-100 bg-transparent p-10 h-fit flex flex-col items-center lg:card lg:block'>
+        <div className='w-100 m-5 bg-transparent p-10 h-fit flex flex-col items-center lg:card lg:block'>
             <h1 className='text-6xl m-5 text-center lg:float-left'>The Weather App 🌦️</h1>
             <form onSubmit={handleSubmit} className='flex flex-col items-center mt-20 lg:float-right w-5/6 p-2'>
                 <label className='text-2xl'> Type in a city</label>

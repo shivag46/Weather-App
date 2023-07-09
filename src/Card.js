@@ -56,8 +56,8 @@ function Card() {
             </div>
         ) :
             (
-                <div className='lg:card w-100 text-center relative'>
-                    <div className='w-fit scale-50 lg:scale-75 lg:right-5 lg:top-5 absolute right-0 -top-7'>
+                <div className='lg:card w-100 lg:m-5 text-center relative'>
+                    <div className='w-fit scale-50 lg:scale-75 lg:right-5 lg:top-5 absolute right-0 top-0'>
                         <RoundedButton setUnit={setUnit} />
                     </div>
 

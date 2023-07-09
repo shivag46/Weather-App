@@ -5,7 +5,7 @@ import Card from './Card';
 function App() {
   return (
     <Router>
-      <div style={{ "fontFamily": "Belanosima" }} className='h-screen flex justify-center items-center bg-slate-300'>
+      <div style={{ "fontFamily": "Belanosima","minHeight":"100vh" }}  className='flex justify-center items-center bg-slate-300'>
         <Routes>
           <Route path='/' element={<SearchForm />}></Route>
           <Route path='/city/:id' element={<Card />}></Route>
